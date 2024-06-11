@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Request, Depends
-from uuid import UUID
 
 from app.db.session import get_db
 from app.schemas.crud.client import Client, ClientCreate
