@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: python app/main.py
+    tty: true
+    volumes:
+      - ./:/app/:cached
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '8000:8080'
