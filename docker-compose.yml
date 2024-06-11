@@ -1,5 +1,18 @@
 version: '3.7'
 services:
+  postgres:
+    image: postgres:12
+    restart: always
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=reservations
+      - POSTGRES_USER=reservations
+      - POSTGRES_PASSWORD=yrx5TVgura2a6
+    ports:
+      - '5432:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data:cached
+
   backend:
     build:
       context: ./
@@ -8,7 +21,13 @@ services:
     tty: true
     volumes:
       - ./:/app/:cached
+    env_file:
+      .env
     environment:
       PYTHONPATH: .
     ports:
       - '8000:8080'
+    depends_on:
+      - "postgres"
+volumes:
+  db-data:
