@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Request, Depends
+from fastapi import APIRouter, Request, Depends, HTTPException, status
 
 from app.db.session import get_db
 from app.schemas.api.provider_schedule import (
@@ -37,6 +37,13 @@ async def create_provider_schedule(
         provider_schedule.schedule_date,
         time(provider_schedule.end_time_hour, provider_schedule.end_time_minute),
     )
+
+    if end_time < start_time:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="The end time cannot be less than the start time",
+        )
+
     create_schedule(
         db=db, provider_id=provider_id, start_time=start_time, end_time=end_time
     )

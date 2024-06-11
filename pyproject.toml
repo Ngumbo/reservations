@@ -8,12 +8,15 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 fastapi = "^0.111.0"
-pytest = "^8.2.2"
 alembic = "^1.13.1"
 pydantic-settings = "^2.3.2"
 psycopg2 = "^2.9.9"
-black = "^24.4.2"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^5.0.0"
+black = "^24.4.2"
+pytest = "^8.2.2"
 
 [build-system]
 requires = ["poetry-core"]

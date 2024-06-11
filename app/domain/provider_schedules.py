@@ -5,9 +5,7 @@ from app.schemas.crud.provider_schedule import ProviderScheduleCreate
 from app.crud.provider_schedules import crud_create_provider_schedule
 
 
-def create_schedule(
-    db: Session, provider_id: UUID, start_time: datetime, end_time: datetime
-):
+def create_schedule_intervals(start_time: datetime, end_time: datetime):
     interval = timedelta(minutes=15)
 
     periods = []
@@ -17,7 +15,13 @@ def create_schedule(
         periods.append((period_start, period_end))
         period_start = period_end
 
-    print(periods)
+    return periods
+
+
+def create_schedule(
+    db: Session, provider_id: UUID, start_time: datetime, end_time: datetime
+):
+    periods = create_schedule_intervals(start_time=start_time, end_time=end_time)
     for period in periods:
         crud_create_provider_schedule(
             db=db,
