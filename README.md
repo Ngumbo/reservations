@@ -10,6 +10,7 @@ Duplicate `.test.env` and name it `.env`. Change the `DB_HOST` to `DB_HOST=postg
 ```commandline
 > sh build.sh
 ```
+Swagger docs can be accessed at: `http://localhost:8000/api/docs`
 
 ### Installing dependencies locally
 After creating a python virtual environment, run the following command
