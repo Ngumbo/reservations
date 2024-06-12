@@ -11,12 +11,14 @@ fastapi = "^0.111.0"
 alembic = "^1.13.1"
 pydantic-settings = "^2.3.2"
 psycopg2 = "^2.9.9"
+sqlalchemy-utils = "^0.41.2"
 
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^5.0.0"
 black = "^24.4.2"
 pytest = "^8.2.2"
+pytest-mock = "^3.14.0"
 
 [build-system]
 requires = ["poetry-core"]

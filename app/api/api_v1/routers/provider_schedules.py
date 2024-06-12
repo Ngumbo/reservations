@@ -18,6 +18,7 @@ provider_schedules_router = r = APIRouter()
 @r.post(
     "/provider_schedules/{provider_id}",
     response_model_exclude_none=True,
+    status_code=201,
 )
 async def create_provider_schedule(
     request: Request,
@@ -54,7 +55,7 @@ async def create_provider_schedule(
     response_model_exclude_none=True,
     response_model=ProviderScheduleResponse,
 )
-async def create_provider_schedule(
+async def get_provider_schedule(
     request: Request,
     provider_id: UUID,
     db=Depends(get_db),

@@ -8,10 +8,7 @@ from app.crud.provider_schedules import update_provider_schedule_booking
 appointments_router = r = APIRouter()
 
 
-@r.post(
-    "/appointments",
-    response_model_exclude_none=True,
-)
+@r.post("/appointments", response_model_exclude_none=True, status_code=201)
 async def create_client_appointment_reservation(
     request: Request,
     appointment_create: AppointmentCreate,
