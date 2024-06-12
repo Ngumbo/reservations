@@ -10,6 +10,7 @@ providers_router = r = APIRouter()
 @r.post(
     "/providers",
     response_model_exclude_none=True,
+    status_code=201
 )
 async def create_provider(
     request: Request,
@@ -19,7 +20,7 @@ async def create_provider(
     """
     Create provider
     """
-    crud_create_provider(
+    created_provider = crud_create_provider(
         db=db,
         provider=ProviderCreate(
             first_name=provider.first_name,
@@ -28,3 +29,5 @@ async def create_provider(
             specialty=provider.specialty,
         ),
     )
+
+    return {"provider_id": created_provider.id}

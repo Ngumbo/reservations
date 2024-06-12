@@ -67,3 +67,6 @@ I would also add some form of api authentication.
 
 I would add more edge case checking for the clients and providers endpoint. Right now, those endpoints don't
 handle things like duplicate client/providers.
+
+Another thing would be to check if clients can book more than one time slot per day, if not then previous timeslot would
+cancel if more than one booking is created per day.

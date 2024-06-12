@@ -19,9 +19,11 @@ async def create_client(
     """
     Create client
     """
-    crud_create_client(
+    created_client = crud_create_client(
         db=db,
         client=ClientCreate(
             first_name=client.first_name, last_name=client.last_name, email=client.email
         ),
     )
+
+    return {"client_id": created_client.id}
